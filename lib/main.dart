@@ -12,26 +12,61 @@ class HalamanSaya extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.home),
-        title: Center(
-          child: Text("IDR Corner"),
-        ),
-        actions: <Widget>[Icon(Icons.search), Icon(Icons.security)],
-        backgroundColor: Colors.red,
+        title: Text("Card & Parsing"),
       ),
-      backgroundColor: Colors.yellow,
       body: Container(
+          child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          CardSaya(
+            icon: Icons.home,
+            teks: 'Home',
+            warnaIcon: Colors.brown,
+          ),
+          CardSaya(
+            icon: Icons.favorite,
+            teks: 'Favorite',
+            warnaIcon: Colors.pink,
+          ),
+          CardSaya(
+            icon: Icons.place,
+            teks: 'Place',
+            warnaIcon: Colors.blue,
+          ),
+          CardSaya(
+            icon: Icons.settings,
+            teks: 'Settings',
+            warnaIcon: Colors.green,
+          ),
+        ],
+      )),
+    );
+  }
+}
+
+class CardSaya extends StatelessWidget {
+  CardSaya({this.icon, this.teks, this.warnaIcon});
+
+  final IconData icon;
+  final String teks;
+  final Color warnaIcon;
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      padding: EdgeInsets.all(4.0),
+      child: Card(
         child: Column(
           children: <Widget>[
-            Icon(Icons.local_pizza, size: 70.0, color: Colors.red),
-            Row(
-              children: <Widget>[
-                Icon(Icons.donut_large, size: 70.0, color: Colors.red),
-                Icon(Icons.donut_large, size: 70.0, color: Colors.red),
-                Icon(Icons.donut_large, size: 70.0, color: Colors.red)
-              ],
+            Icon(
+              icon,
+              size: 50.0,
+              color: warnaIcon,
             ),
-            Icon(Icons.cake, size: 70.0, color: Colors.red)
+            Text(
+              teks,
+              style: TextStyle(fontSize: 20.0),
+            )
           ],
         ),
       ),
